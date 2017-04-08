@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons start>
+      <button ion-button clear (click)="onDismiss()">
+        <span showWhen="ios,core">{{ "CLOSE" | translate }}</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{ 'EDIT_PROFILE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+      <ion-item>
+        <ion-icon name="contact" item-left color="primary"></ion-icon>
+        <ion-label color="primary">{{ 'NAME' | translate }}</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="at" item-left color="primary"></ion-icon>
+        <ion-label color="primary">{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="lock" item-left color="primary"></ion-icon>
+        <ion-label color="primary">{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="text" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary">
+          {{ 'UPLOAD_PICTURE' | translate }}
+        </ion-label>
+        <button type="button" ion-button clear item-right icon-only (click)="onUpload()">
+          <ion-icon name="camera" item-left color="primary"></ion-icon>
+        </button>
+      </ion-item>
+
+      <div padding>
+        <button type="submit" ion-button block [disabled]="!form.valid">
+          {{ 'SUBMIT' | translate }}
+        </button>
+      </div>
+
+    </form>
+  </ion-list>
+</ion-content>

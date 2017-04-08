@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ "REVIEWS" | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding #container>
+
+  <ion-refresher (ionRefresh)="onReload($event)">
+    <ion-refresher-content
+      pullingText="{{ 'PULL_TO_REFRESH' | translate }}"
+      refreshingText="{{ 'REFRESHING' | translate }}">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <empty-view *ngIf="isErrorViewVisible" icon="alert"
+    [text]="'ERROR_REVIEWS' | translate">
+  </empty-view>
+
+  <empty-view *ngIf="isEmptyViewVisible" icon="star"
+    [text]="'EMPTY_REVIEWS' | translate">
+  </empty-view>
+
+  <ion-list>
+    <ion-item *ngFor="let review of reviews" color="dark" text-wrap>
+      <ion-avatar item-left>
+
+        <img src="assets/img/avatar.png" offset="100"
+          [lazyLoad]="review.userData.get('photo') ? review.userData.get('photo').url() : ''"
+          [scrollTarget]="container.getScrollElement()">
+      </ion-avatar>
+      <h2>{{ review.userData.get('name') }}</h2>
+      <rating [(ngModel)]="review.rating" readOnly="true"></rating>
+      <p>{{ review.comment }}</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="onLoadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

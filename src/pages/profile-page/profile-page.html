@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'PROFILE' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button clear (click)="onPresentEditModal()">
+        {{ 'EDIT' | translate }}
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content text-center #container>
+  <ion-avatar>
+    <img src="assets/img/avatar.png"
+      [lazyLoad]="user.get('photo') ? user.get('photo').url() : ''"
+      [scrollTarget]="container.getScrollElement()" />
+  </ion-avatar>
+  <h3>{{ user.get('name') }}</h3>
+  <ion-row padding-vertical>
+    <ion-col width-33>
+      <h2 ion-text color="light">{{ stats.favorites }}</h2>
+      <span text-uppercase color="dark">{{ 'FAVORITES' | translate }}</span>
+    </ion-col>
+    <ion-col width-33>
+      <h2 ion-text color="light">{{ stats.reviews }}</h2>
+      <span text-uppercase color="dark">{{ 'REVIEWS' | translate }}</span>
+    </ion-col>
+    <ion-col width-33>
+      <h2 ion-text color="light">{{ stats.places }}</h2>
+      <span text-uppercase color="dark">{{ 'PLACES' | translate }}</span>
+    </ion-col>
+  </ion-row>
+  <ion-item>
+    <h2 ion-text color="primary">{{ 'EMAIL' | translate }}</h2>
+    <p>{{ user.getEmail() }}</p>
+  </ion-item>
+  <ion-item>
+    <h2 ion-text color="primary">{{ 'REGISTRATION_DATE' | translate }}</h2>
+    <p>{{ user.createdAt.toLocaleString() }}</p>
+  </ion-item>
+</ion-content>

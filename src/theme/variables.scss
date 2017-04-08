@@ -1,0 +1,83 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+@import "ionic.globals";
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+$text-color:              #7d7d7d;
+$background-color:        #202020;
+$card-header-color:   $text-color;
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #483a51,
+  secondary:  #9988aa,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #111,
+  ubort:      #483a51
+);
+
+$refresher-icon-color:   color($colors, primary, base);
+$refresher-text-color:   color($colors, primary, base);
+$refresher-border-color: color($colors, dark, base);
+$list-border-color:      color($colors, secondary, base);
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+$card-ios-background-color: color($colors, dark, base);
+$toast-ios-title-color: color($colors, primary, base);
+$list-ios-border-color: color($colors, secondary, base);
+$loading-ios-spinner-color: color($colors, primary, base);
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+$card-md-background-color: color($colors, dark, base);
+$toast-md-title-color:     color($colors, primary, base);
+$list-md-border-color:     color($colors, secondary, base);
+$loading-md-spinner-color: color($colors, primary, base);
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+$ionicons-font-path: "../assets/fonts";
+@import "ionicons";

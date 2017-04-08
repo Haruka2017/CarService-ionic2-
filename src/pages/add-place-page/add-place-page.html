@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ "ADD_PLACE" | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div showWhen="android,ios">
+    <ion-searchbar color="dark" placeholder="{{ 'ENTER_ADDRESS' | translate }}"
+      (ionInput)="onSearchAddress($event)"></ion-searchbar>
+    <div id="map_add" class="map"></div>
+  </div>
+
+  <empty-view [text]="'ERROR_CORDOVA_MAPS' | translate" showWhen="core"></empty-view>
+
+  <ion-list padding>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+      <ion-item>
+        <ion-icon name="at" item-left color="primary"></ion-icon>
+        <ion-label color="primary">{{ "NAME" | translate }}</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="pricetag" item-left color="primary"></ion-icon>
+        <ion-label color="primary">{{ "CATEGORY" | translate }}</ion-label>
+        <ion-select formControlName="category">
+          <ion-option *ngFor="let category of categories" [value]="category">
+            {{ category.title }}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="create" item-left color="primary"></ion-icon>
+        <ion-label color="primary">{{ "DESCRIPTION" | translate }}</ion-label>
+        <ion-textarea formControlName="description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="globe" item-left color="primary"></ion-icon>
+        <ion-label color="primary">{{ "WEBSITE" | translate }}</ion-label>
+        <ion-input type="url" formControlName="website"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="pin" item-left color="primary"></ion-icon>
+        <ion-label color="primary">{{ "ADDRESS" | translate }}</ion-label>
+        <ion-input type="text" formControlName="address">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="call" item-left color="primary"></ion-icon>
+        <ion-label color="primary">{{ "PHONE" | translate }}</ion-label>
+        <ion-input type="text" formControlName="phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary">
+          {{ "UPLOAD_PICTURE" | translate }}
+        </ion-label>
+        <button type="button" ion-button clear item-right icon-only (click)="onUpload()">
+          <ion-icon name="camera" item-left color="primary"></ion-icon>
+        </button>
+      </ion-item>
+
+      <div padding>
+        <button type="submit" ion-button block [disabled]="!form.valid">
+          {{ "SUBMIT" | translate }}
+        </button>
+      </div>
+
+    </form>
+  </ion-list>
+</ion-content>

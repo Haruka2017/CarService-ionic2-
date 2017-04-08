@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons start>
+      <button ion-button clear (click)="onDismiss()">
+        <span showWhen="ios,core">{{ 'CLOSE' | translate }}</span>
+        <ion-icon name="md-close" showWhen="android"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'ADD_REVIEW' | translate }}
+    </ion-title>
+ </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list text-center>
+    <rating [(ngModel)]="review.rating"></rating>
+    <ion-item>
+      <ion-label color="primary" stacked>{{ 'COMMENT' | translate }}</ion-label>
+      <ion-textarea [(ngModel)]="review.comment" rows="6"></ion-textarea>
+    </ion-item>
+    <div padding>
+      <button ion-button block color="primary" (click)="onSubmit()">
+        {{ 'SUBMIT' | translate }}
+      </button>
+    </div>
+  </ion-list>
+</ion-content>

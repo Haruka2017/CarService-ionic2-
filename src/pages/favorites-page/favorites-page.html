@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ "MY_FAVORITES" | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding #container>
+
+  <ion-refresher (ionRefresh)="onReload($event)">
+    <ion-refresher-content
+      pullingText="{{ 'PULL_TO_REFRESH' | translate }}"
+      refreshingText="{{ 'REFRESHING' | translate }}">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <empty-view *ngIf="isErrorViewVisible" icon="alert"
+    [text]="'ERROR_FAVORITES' | translate">
+  </empty-view>
+
+  <empty-view *ngIf="isEmptyViewVisible" icon="heart"
+    [text]="'EMPTY_FAVORITES' | translate">
+  </empty-view>
+
+  <ion-list *ngIf="isContentViewVisible">
+    <ion-item *ngFor="let place of places" (click)="goToPlace(place)"
+      color="dark" no-lines>
+      <ion-thumbnail item-left>
+        <img src="assets/img/location.png" offset="100"
+          [lazyLoad]="place.imageThumb.url()"
+          [scrollTarget]="container.getScrollElement()">
+      </ion-thumbnail>
+      <h2 class="bold" ion-text color="secondary">{{ place.title }}</h2>
+      <p>{{ place.description }}</p>
+      <rating *ngIf="place.rating" [(ngModel)]="place.rating" readOnly="true"></rating>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="onLoadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

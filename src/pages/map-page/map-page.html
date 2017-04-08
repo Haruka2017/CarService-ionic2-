@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ "MAP" | translate }}</ion-title>
+  </ion-navbar>
+  <ion-toolbar color="primary">
+    <ion-searchbar color="dark" debounce="2000"
+      placeholder="{{ 'ENTER_ADDRESS' | translate }}"
+      (ionInput)="onSearchAddress($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="map" class="map" #map showWhen="android,ios"></div>
+  <empty-view [text]="'ERROR_CORDOVA_MAPS' | translate" icon="map" showWhen="core">
+  </empty-view>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary" text-center>
+    <button ion-button outline (click)="onSearchButtonTapped()">
+      {{ "SEARCH" | translate }}
+    </button>
+  </ion-toolbar>
+</ion-footer>

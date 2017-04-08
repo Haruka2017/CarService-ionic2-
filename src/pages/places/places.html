@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-segment [(ngModel)]="params.filter" showWhen="android,core" color="secondary">
+      <ion-segment-button value="nearby" (ionSelect)="onFilter('nearby')">
+        {{ "NEARBY" | translate }}
+      </ion-segment-button>
+      <ion-segment-button value="new" (ionSelect)="onFilter('new')">
+        {{ "NEW" | translate }}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-navbar>
+  <ion-toolbar color="primary" showWhen="ios,windows">
+    <ion-segment [(ngModel)]="params.filter" color="secondary">
+      <ion-segment-button value="nearby" (ionSelect)="onFilter('nearby')">
+        {{ "NEARBY" | translate }}
+      </ion-segment-button>
+      <ion-segment-button value="new" (ionSelect)="onFilter('new')">
+        {{ "NEW" | translate }}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding #container>
+
+  <ion-refresher (ionRefresh)="onReload($event)">
+    <ion-refresher-content
+      pullingText="{{ 'PULL_TO_REFRESH' | translate }}"
+      refreshingText="{{ 'REFRESHING' | translate }}">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <empty-view *ngIf="isErrorViewVisible" icon="alert"
+    [text]="'ERROR_PLACES' | translate">
+  </empty-view>
+
+  <empty-view *ngIf="isEmptyViewVisible" icon="map"
+    [text]="'EMPTY_PLACES' | translate">
+  </empty-view>
+
+  <ion-list *ngIf="isContentViewVisible">
+    <ion-item *ngFor="let place of places" (click)="goToPlace(place)"
+      color="dark" no-lines>
+      <ion-thumbnail item-left>
+        <img src="assets/img/location.png" offset="100"
+          [lazyLoad]="place.imageThumb.url()"
+          [scrollTarget]="container.getScrollElement()">
+      </ion-thumbnail>
+      <h2 class="bold" ion-text color="secondary">{{ place.title }}</h2>
+      <p>{{ place.description }}</p>
+      <ion-note ion-text color="light" item-right>
+        {{ place.distance(params.location, params.unit) }}
+      </ion-note>
+      <rating *ngIf="place.rating" [(ngModel)]="place.rating" readOnly="true">
+      </rating>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="onLoadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

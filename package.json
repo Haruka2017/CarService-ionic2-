@@ -1,0 +1,59 @@
+{
+  "name": "Ubort",
+  "author": "Ubort",
+  "homepage": "http://ubort.life/",
+  "private": true,
+  "scripts": {
+    "build": "ionic-app-scripts build",
+    "watch": "ionic-app-scripts watch",
+    "serve:before": "watch",
+    "emulate:before": "build",
+    "deploy:before": "build",
+    "build:before": "build",
+    "run:before": "build"
+  },
+  "dependencies": {
+    "@angular/common": "2.1.1",
+    "@angular/compiler": "2.1.1",
+    "@angular/compiler-cli": "2.1.1",
+    "@angular/core": "2.1.1",
+    "@angular/forms": "2.1.1",
+    "@angular/http": "2.1.1",
+    "@angular/platform-browser": "2.1.1",
+    "@angular/platform-browser-dynamic": "2.1.1",
+    "@angular/platform-server": "2.1.1",
+    "@ionic/storage": "1.1.6",
+    "ionic-angular": "2.0.0-rc.3",
+    "ionic-native": "2.2.9",
+    "ionic2-rating": "0.0.10",
+    "ionicons": "3.0.0",
+    "ng2-img-fallback": "^0.2.1",
+    "ng2-lazyload-image": "^2.2.2",
+    "ng2-translate": "^4.0.0",
+    "parse": "^1.9.2",
+    "rxjs": "5.0.0-beta.12",
+    "zone.js": "0.6.26"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "^1.0.0",
+    "@types/parse": "^1.2.32",
+    "typescript": "^2.1.4"
+  },
+  "cordovaPlugins": [
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard"
+  ],
+  "cordovaPlatforms": [
+    "ios",
+    {
+      "platform": "ios",
+      "version": "",
+      "locator": "ios"
+    }
+  ],
+  "description": "NearmeApp: An Ionic project"
+}

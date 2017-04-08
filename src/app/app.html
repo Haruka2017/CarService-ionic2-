@@ -1,0 +1,28 @@
+<ion-menu [content]="content" (ionOpen)="onMenuOpened()" (ionClose)="onMenuClosed()">
+  <ion-header>
+    <ion-toolbar class="menu-toolbar" *ngIf="user">
+      <ion-item no-lines>
+        <ion-avatar item-left>
+          <img src="assets/img/avatar.png" offset="100"
+            [lazyLoad]="user.get('photo') ? user.get('photo').url() : ''">
+        </ion-avatar>
+        <span>{{ user.get('name') }}</span>
+      </ion-item>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button class="bold" menuClose text-uppercase no-lines ion-item
+        *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon [name]="p.icon" item-left color="primary"></ion-icon>
+        <p ion-text color="primary">
+          {{ p.title }}
+        </p>
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>

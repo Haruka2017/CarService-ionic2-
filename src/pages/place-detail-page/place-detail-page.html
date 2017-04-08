@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ place.title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #container>
+
+  <ion-slides pager>
+    <ion-slide *ngFor="let image of images">
+      <img src="assets/img/avatar.png" offset="100"
+        [lazyLoad]="image.url()"
+        [scrollTarget]="container.getScrollElement()" />
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card class="card-secondary" text-center>
+    <ion-card-header>
+      <span ion-text color="secondary">{{ place.title }}</span>
+    </ion-card-header>
+    <ion-card-content>
+      <span ion-text color="light">{{ place.description }}</span>
+    </ion-card-content>
+    <ion-grid>
+      <ion-row no-padding>
+        <ion-col width-33>
+          <button ion-button icon-left small round block
+            color="primary" (click)="onLike()">
+            <ion-icon name="heart"></ion-icon>
+            {{ "LIKE" | translate }}
+          </button>
+        </ion-col>
+        <ion-col width-33>
+          <button ion-button icon-left small round block
+            color="primary" (click)="onRate()">
+            <ion-icon name="star"></ion-icon>
+            {{ "RATE" | translate }}
+          </button>
+        </ion-col>
+        <ion-col width-33>
+          <button ion-button icon-left small round block
+            color="primary" (click)="onShare()">
+            <ion-icon name="share"></ion-icon>
+            {{ "SHARE" | translate }}
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card>
+
+    <img src="assets/img/avatar.png" offset="100"
+      lazyLoad="https://maps.googleapis.com/maps/api/staticmap?markers=color:yellow%7C{{place.location.latitude}},{{place.location.longitude}}&zoom=18&format=png&maptype=roadmap&style=element:geometry%7Ccolor:0x242f3e&style=element:labels.text.fill%7Ccolor:0x746855&style=element:labels.text.stroke%7Ccolor:0x242f3e&style=feature:administrative.locality%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:poi.park%7Celement:geometry%7Ccolor:0x263c3f&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x6b9a76&style=feature:road%7Celement:geometry%7Ccolor:0x38414e&style=feature:road%7Celement:geometry.stroke%7Ccolor:0x212a37&style=feature:road%7Celement:labels.text.fill%7Ccolor:0x9ca5b3&style=feature:road.highway%7Celement:geometry%7Ccolor:0x746855&style=feature:road.highway%7Celement:geometry.stroke%7Ccolor:0x1f2835&style=feature:road.highway%7Celement:labels.text.fill%7Ccolor:0xf3d19c&style=feature:transit%7Celement:geometry%7Ccolor:0x2f3948&style=feature:transit.station%7Celement:labels.text.fill%7Ccolor:0xd59563&style=feature:water%7Celement:geometry%7Ccolor:0x17263c&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x515c6d&style=feature:water%7Celement:labels.text.stroke%7Ccolor:0x17263c&size=600x250"
+      [scrollTarget]="container.getScrollElement()">
+    <ion-fab right top>
+      <button ion-fab>
+        <ion-icon name="pin"></ion-icon>
+      </button>
+    </ion-fab>
+
+    <ion-item color="secondary" *ngIf="place.address">
+      <h2 ion-text color="primary">{{ "ADDRESS" | translate }}</h2>
+      <p>{{ place.address }}</p>
+    </ion-item>
+
+    <ion-item color="secondary">
+      <span class="bold" item-left ion-text color="primary" *ngIf="location">
+        <small>({{ place.distance(location, unit) }})</small>
+      </span>
+      <button ion-button item-right color="primary" (click)="goToMap()">
+        <ion-icon name="navigate"></ion-icon>
+        {{ "START" | translate }}
+      </button>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card class="card-secondary">
+    <ion-card-header>
+      <span ion-text color="secondary">{{ "EXPLORE_MORE" | translate }}</span>
+    </ion-card-header>
+
+    <ion-list no-lines>
+      <button ion-item (click)="goToMap()">
+        <ion-icon name="map" item-left color="primary"></ion-icon>
+        {{ "GET_DIRECTIONS" | translate }}
+      </button>
+
+      <button ion-item (click)="onCall()" *ngIf="place.phone">
+        <ion-icon name="call" item-left color="primary"></ion-icon>
+        {{ "PHONE" | translate }}
+      </button>
+
+      <button ion-item (click)="openUrl()" *ngIf="place.website && place.website !== 'http://'">
+        <ion-icon name="globe" item-left color="primary"></ion-icon>
+        {{ "WEBSITE" | translate }}
+      </button>
+
+      <button ion-item (click)="goToReviews()">
+        <ion-icon name="star" item-left color="primary"></ion-icon>
+        {{ "REVIEWS" | translate }}
+      </button>
+
+    </ion-list>
+  </ion-card>
+
+</ion-content>

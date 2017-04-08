@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons start>
+      <button ion-button (click)="onCancel()">
+        <span showWhen="ios,core">{{ "CLOSE" | translate }}</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+ </ion-toolbar>
+</ion-header>
+
+<ion-content text-center>
+  <h2 ion-text color="light">{{ "APP_TITLE" | translate }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+    <ion-list inset no-lines>
+
+      <ion-item>
+        <ion-label stacked color="secondary">{{ "NAME" | translate }}</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked color="secondary">{{ "EMAIL" | translate }}</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item padding>
+        <ion-label stacked color="secondary">{{ "PASSWORD" | translate }}</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button type="submit" color="primary" ion-button block
+      [disabled]="!form.valid">
+        {{ "SIGNUP" | translate }}
+      </button>
+    </div>
+
+  </form>
+</ion-content>

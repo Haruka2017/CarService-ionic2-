@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'SETTINGS' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list radio-group (ionChange)="onChangeUnit()" [(ngModel)]="settings.unit">
+    <ion-list-header>
+      <span ion-text class="bold" color="primary">{{ 'DISTANCE_UNIT' | translate }}</span>
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-label>Mi</ion-label>
+      <ion-radio value="mi"></ion-radio>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>Km</ion-label>
+      <ion-radio value="km"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <ion-list radio-group (ionChange)="onChangeMapStyle()" [(ngModel)]="settings.mapStyle">
+    <ion-list-header>
+      <span ion-text class="bold" color="primary">{{ 'MAP_STYLE' | translate }}</span>
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-label>{{ 'SATELLITE' | translate }}</ion-label>
+      <ion-radio value="MAP_TYPE_SATELLITE"></ion-radio>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>{{ 'NORMAL' | translate }}</ion-label>
+      <ion-radio value="MAP_TYPE_NORMAL"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <ion-list radio-group (ionChange)="onChangeLang()" [(ngModel)]="settings.lang">
+    <ion-list-header>
+      <span ion-text class="bold" color="primary">{{ 'LANGUAGE' | translate }}</span>
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-label>{{ 'ENGLISH' | translate }}</ion-label>
+      <ion-radio value="en"></ion-radio>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>{{ 'SPANISH' | translate }}</ion-label>
+      <ion-radio value="es"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      <span ion-text class="bold" color="primary">{{ 'MORE' | translate }}</span>
+    </ion-list-header>
+    <button ion-item no-lines (click)="goToWalkthrough()">
+      {{ 'OPEN_WALKTHROUGH' | translate }}
+    </button>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,24 @@
+page-place-detail-page {
+  ion-slides {
+    height: auto;
+  }
+
+  .card-secondary {
+    background: color($colors, dark, base);
+  }
+
+  ion-card {
+    position: relative;
+    top: -45px;
+    z-index: 999999;
+
+    ion-card-header {
+      font-size: 1.5em !important;
+      padding-bottom: 8px;
+    }
+
+    ion-card-content {
+      font-size: 0.9em !important;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+page-reviews-page {
+  ul {
+    margin: 4px 0;
+    padding: 0px;
+
+    &.rating li {
+      padding: 5px 0 !important;
+      background: none;
+      color: color($colors, primary, base);
+
+      ion-icon {
+        font-size: 16px;
+      }
+    }
+  }
+}

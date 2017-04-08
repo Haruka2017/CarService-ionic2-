@@ -1,0 +1,53 @@
+<ion-content>
+  <ion-slides [options]="{pager: true}">
+
+    <ion-slide class="slide-1" color="light">
+      <img src="assets/img/icon.png" class="slide-image"/>
+      <div class="caption">
+        <h2 class="slide-title" ion-text color="ubort">
+          {{ 'SLIDE_ONE' | translate }}
+        </h2>
+      </div>
+    </ion-slide>
+
+    <ion-slide class="slide-2">
+      <img src="assets/img/slide-2.png" class="slide-image"/>
+      <div class="caption">
+        <h2 class="slide-title" ion-text color="light">
+          {{ 'SLIDE_TWO' | translate }}
+        </h2>
+      </div>
+    </ion-slide>
+
+    <ion-slide class="slide-3">
+      <img src="assets/img/slide-3.png" class="slide-image"/>
+      <div class="caption">
+        <h2 class="slide-title" ion-text color="dark">
+          {{ 'SLIDE_THREE' | translate }}
+        </h2>
+      </div>
+    </ion-slide>
+
+    <ion-slide class="slide-4">
+      <img src="assets/img/slide-4.png" class="slide-image"/>
+      <div class="caption">
+        <h2 class="slide-title" ion-text color="light">
+          {{ 'SLIDE_FOUR' | translate }}
+        </h2>
+      </div>
+    </ion-slide>
+
+    <ion-slide class="slide-5">
+      <div class="caption">
+        <h2 ion-text color="light">{{ 'SLIDE_FIVE' | translate }}</h2>
+      </div>
+      <button ion-button large icon-right color="dark" (click)="goToHome()">
+        {{ "GET STARTED" | translate }}
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  </ion-slides>
+  <button class="skip-button" ion-button clear block color="light" (click)="goToHome()">
+    {{ "SKIP" | translate }}
+  </button>
+</ion-content>

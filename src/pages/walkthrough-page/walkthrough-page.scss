@@ -1,0 +1,59 @@
+page-walkthrough-page {
+  ion-slides {
+
+    height: 100% !important;
+
+    .swiper-wrapper {
+
+      .slide-1 {
+        background-color: color($colors, light, base);
+      }
+
+      .slide-2 {
+        background-color: color($colors, primary, base);
+      }
+
+      .slide-3 {
+        background-color: color($colors, light, base);
+      }
+
+      .slide-4 {
+        background-color: color($colors, dark, base);
+      }
+
+      .slide-5 {
+        background-color: color($colors, primary, base);
+      }
+
+      ion-slide {
+
+        .slide-image {
+          width: 50%;
+        }
+
+        .caption {
+          margin-right: auto;
+          margin-left: auto;
+          margin-top: 40px;
+          width: 80%;
+
+          .slide-title {
+            font-size: 3vh;
+          }
+        }
+      }
+    }
+
+    .swiper-pagination {
+      height: 50px;
+      bottom: 60px !important;
+      padding-top: 15px;
+    }
+  }
+
+  .skip-button {
+    z-index: 9999;
+    position: absolute;
+    bottom: 0;
+  }
+}
